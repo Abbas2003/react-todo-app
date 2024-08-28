@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "./components/TodoInput";
 import Todos from "./components/TodoList";
+import Footer from "./components/Footer";
 
 function App() {
   const [inp, setInp] = useState("");
@@ -32,13 +33,18 @@ function App() {
     const filteredTodos = todos.filter((todo) => todo.id !== id); // Filters out the todo with the given id
     setTodos(filteredTodos);
   };
-
   return (
-    <div className="w-3/4 mx-auto">
-      <h1 className="text-3xl font-bold text-center mt-5">Todo App</h1>
-      <Input onClick={addTodo} onChange={(e) => setInp(e.target.value)} value={inp} />
-
-      <Todos todos={todos} onDelete={deleteTodo} /> {/* Pass delete function as a prop */}
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-grow w-3/4 mx-auto">
+        <h1 className="text-3xl font-bold text-center mt-5">Todo App</h1>
+        <Input
+          onClick={addTodo}
+          onChange={(e) => setInp(e.target.value)}
+          value={inp}
+        />
+        <Todos todos={todos} onDelete={deleteTodo} />
+      </div>
+      <Footer />
     </div>
   );
 }
