@@ -1,3 +1,5 @@
+
+
 const Input = ({ onClick, onChange, value }) => {
     return (
         <div className="text-center my-7">

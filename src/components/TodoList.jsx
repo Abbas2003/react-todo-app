@@ -1,21 +1,21 @@
+import React from "react";
 
-
-const Todos = ({todos}) => {
-    return (
-        <div>
-            {
-                todos.map((data) => {
-                    return (
-                        <div key={data.id} className="flex bg-slate-50 p-3">
-                            <h3 className="text-2xl flex-1 pl-2">{data.inp}</h3>
-                            <button className="py-2 px-4 bg-red-400 hover:bg-red-600 hover:text-white">Delete</button>
-                        </div>
-                    )
-                })
-            }
+function TodoList({ todos, onDelete }) {
+  return (
+    <div>
+      {todos.map((todo) => (
+        <div key={todo.id} className="flex justify-between items-center my-2 p-2 border-b">
+          <span className="font-mono font-bold text-2xl" >{todo.inp}</span>
+          <button
+            onClick={() => onDelete(todo.id)}
+            className="bg-red-500 text-white px-2 py-1 rounded"
+          >
+            Delete
+          </button>
         </div>
-    )
+      ))}
+    </div>
+  );
 }
 
-
-export default Todos;
+export default TodoList;
